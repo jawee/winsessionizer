@@ -106,7 +106,7 @@ func (m *model) View() string {
         s += fmt.Sprintf("%s %s\n", cursor, choice)
     }
 
-    s += fmt.Sprintf("Filter> %s", m.searchBox)
+    s += fmt.Sprintf("Search > %s", m.searchBox)
 
     return s
 }
