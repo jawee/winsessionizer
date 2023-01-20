@@ -121,7 +121,7 @@ func main() {
 
     if m, ok := m.(*model); ok && m.choice != "" {
         // fmt.Printf("cd to %s\n", m.choice.path)
-        fmt.Printf(m.choice)
+        fmt.Println(m.choice)
         // os.Chdir(m.choice.path)
     }
 }
