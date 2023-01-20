@@ -3,8 +3,10 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 
 	tea "github.com/charmbracelet/bubbletea"
+	"github.com/jawee/winsessionizer/internal/fuzzy"
 )
 
 type model struct {
@@ -71,12 +73,18 @@ func (m *model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
     return m, nil
 }
 
+func getFolderName(s string) string {
+    list := strings.Split(s, "/")
+    return list[len(list)-1]
+}
+
 func (m *model) filter() {
     filterStr := m.searchBox
 
     newArray := make([]string, 0)
     for _, s := range m.choices {
-        if fuzzy.Matches(s, filterStr) {
+        fn := getFolderName(s)
+        if fuzzy.Matches(filterStr, fn) {
             newArray = append(newArray, s)
         }
     }
