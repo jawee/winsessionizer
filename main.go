@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"strings"
 
 	tea "github.com/charmbracelet/bubbletea"
 )
@@ -77,7 +76,7 @@ func (m *model) filter() {
 
     newArray := make([]string, 0)
     for _, s := range m.choices {
-        if strings.Contains(s, filterStr) {
+        if fuzzy.Matches(s, filterStr) {
             newArray = append(newArray, s)
         }
     }
